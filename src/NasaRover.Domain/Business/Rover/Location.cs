@@ -1,4 +1,4 @@
-namespace NasaRover.Domain.AggregatesModel.RoverAggregate
+namespace NasaRover.Domain.Business.Rover
 {
     public class Location
     {

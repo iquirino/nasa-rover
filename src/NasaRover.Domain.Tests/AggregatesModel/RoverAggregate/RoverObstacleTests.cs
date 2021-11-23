@@ -1,5 +1,5 @@
 using System;
-using NasaRover.Domain.AggregatesModel.RoverAggregate;
+using NasaRover.Domain.Business.Rover;
 using Xunit;
 
 namespace NasaRover.Domain.Tests.AggregatesModel.RoverAggregate;
