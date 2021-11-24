@@ -32,7 +32,7 @@ public class TerrainEntity
     /// Method used to walk in a terrain.
     /// I choosed to put this method here because a terrain could have other shapes.
     /// </summary>
-    public (Location Location, int Moves, string Reason) Walk(Location location, Direction direction)
+    public (Location location, int moves, string message) Walk(Location location, Direction direction)
     {
         var newLocation = new Location(location.X, location.Y);
         switch (direction)
