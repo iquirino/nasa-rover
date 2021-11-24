@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NasaRover.Domain", "NasaRover.Domain\NasaRover.Domain.csproj", "{CD000EE3-7641-4AD4-B77C-1FD8F6BBD663}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NasaRover.Domain.Tests", "NasaRover.Domain.Tests\NasaRover.Domain.Tests.csproj", "{6F1BB3B8-BB6E-4921-B137-8C215C71E621}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NasaRover.UnitTests", "NasaRover.UnitTests\NasaRover.UnitTests.csproj", "{6F1BB3B8-BB6E-4921-B137-8C215C71E621}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NasaRover.API", "NasaRover.API\NasaRover.API.csproj", "{2D1A2438-DD79-4640-B90F-AF4218EC0A30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +26,9 @@ Global
 		{6F1BB3B8-BB6E-4921-B137-8C215C71E621}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F1BB3B8-BB6E-4921-B137-8C215C71E621}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F1BB3B8-BB6E-4921-B137-8C215C71E621}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D1A2438-DD79-4640-B90F-AF4218EC0A30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D1A2438-DD79-4640-B90F-AF4218EC0A30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D1A2438-DD79-4640-B90F-AF4218EC0A30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D1A2438-DD79-4640-B90F-AF4218EC0A30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

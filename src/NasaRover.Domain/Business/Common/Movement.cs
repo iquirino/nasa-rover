@@ -1,4 +1,4 @@
-namespace NasaRover.Domain.Business.Rover
+namespace NasaRover.Domain.Business.Common
 {
     public enum Movement
     {
