@@ -43,7 +43,7 @@ possible point and reports the obstacle.
 
 ● Given the command "FFRFF" would put the rover at 2,2 facing East.
 
-### Tips!
+### Tips:
 
 ● Don't worry about the structure of the rover. Let the structure evolve as you add
 more tests.
@@ -60,7 +60,7 @@ that you run into issues, use your tests to assert on the inner workings of the 
 
 ## Implementation
 
-● Project Structure
+### Project Structure
 
     /src
         /NasaRover.API //**Api application code**
