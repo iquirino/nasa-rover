@@ -13,15 +13,16 @@ public static class DbInitializer
             return;
         }
 
-        var terrainId = Guid.NewGuid();
-        context.Terrains.Add(new TerrainEntity
+        var terrainId = Guid.Empty;
+        var terrain = new TerrainEntity
         {
             Id = terrainId,
             Name = "Pluto",
             Width = 99,
-            Height = 99,
-            Obstacles = new List<Location>
-            {
+            Height = 99
+        };
+        terrain.AddObstacles(new List<Location>
+        {
                 new Location(0, 2),
                 new Location(0, 3),
                 new Location(0, 5),
@@ -53,12 +54,12 @@ public static class DbInitializer
                 new Location(0, 48),
                 new Location(0, 49),
                 new Location(0, 53),
-            }
-        });
+            });
+        context.Terrains.Add(terrain);
 
         context.Rovers.Add(new RoverEntity
         {
-            Id = Guid.NewGuid(),
+            Id = Guid.Empty,
             Name = "Nasa Rover",
             Location = new Location(0, 0),
             Direction = Direction.North,

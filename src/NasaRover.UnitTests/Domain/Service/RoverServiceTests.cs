@@ -6,9 +6,9 @@ using NasaRover.Domain.Business.Terrain;
 using NasaRover.Domain.Services;
 using Xunit;
 
-namespace NasaRover.UnitTests.Domain.Business.Rover;
+namespace NasaRover.UnitTests.Domain.Service;
 
-public class RoverTests
+public class RoverServiceTests
 {
     [Fact]
     public void Rover_To_North()
@@ -222,7 +222,7 @@ public class RoverTests
     public void Rover_Found_An_Obstacle()
     {
         var pluto = new TerrainEntity(Guid.Empty, "Pluto");
-        pluto.Obstacles.Add(new Location(2,2));
+        pluto.AddObstacle(new Location(2,2));
         var rover = new RoverEntity(Guid.Empty, "Pluto Rover", pluto.Id);
 
         var roverRepositoryMoq = new Mock<IRoverRepository>();

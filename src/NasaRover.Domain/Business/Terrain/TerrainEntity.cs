@@ -1,3 +1,5 @@
+using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using NasaRover.Domain.Business.Common;
 using NasaRover.Domain.Business.Rover;
@@ -12,7 +14,8 @@ public class TerrainEntity
     public int Width { get; set; }
     public int Height { get; set; }
 
-    public List<Location> Obstacles { get; set; } = new List<Location>();
+    private List<Location> _obstacles = new List<Location>();
+    public IReadOnlyList<Location> Obstacles => _obstacles.AsReadOnly();
 
     public TerrainEntity() {
         Width = 99;
@@ -22,6 +25,15 @@ public class TerrainEntity
 
     public TerrainEntity(Guid id, string name, int width = 99, int height = 99)
     {
+        if (name == null)
+            throw new ArgumentNullException(nameof(name));
+
+        if (width < 1)
+            throw new ArgumentOutOfRangeException(nameof(width));
+
+        if (height < 1)
+            throw new ArgumentOutOfRangeException(nameof(height));
+
         Id = id;
         Name = name;
         Width = width;
@@ -34,6 +46,12 @@ public class TerrainEntity
     /// </summary>
     public (Location location, int moves, string message) Walk(Location location, Direction direction)
     {
+        if(location.X < 0 || location.X > Width)
+            return (location, 0, "Out of bounds");
+        
+        if(location.Y < 0 || location.Y > Height)
+            return (location, 0, "Out of bounds");
+
         var newLocation = new Location(location.X, location.Y);
         switch (direction)
         {
@@ -52,8 +70,34 @@ public class TerrainEntity
         }
 
         if (Obstacles.Any(o => o.X == newLocation.X && o.Y == newLocation.Y))
-            return (location, 0, "Encountered an obstacle");
+            return (location, 0, "We could not move, there is an obstacle");
 
         return (newLocation, 1, "Congratulations, we could move without any problems");
+    }
+
+    public void AddObstacle(Location location)
+    {
+        if (Obstacles.Any(o => o.X == location.X && o.Y == location.Y))
+            return; //Obstacle already exists
+        _obstacles.Add(location);
+    }
+
+    public void RemoveObstacle(Location location)
+    {
+        var obstacle = _obstacles.FindIndex(o => o.X == location.X && o.Y == location.Y);
+        if (obstacle >= 0)
+            _obstacles.RemoveAt(obstacle);
+    }
+
+    public void RemoveAllObstacles()
+    {
+        _obstacles.Clear();
+    }
+
+    public void AddObstacles(IEnumerable<Location> locations)
+    {
+        if (locations == null)
+            return;
+        _obstacles.AddRange(locations.Where(l => !Obstacles.Any(o => o.X == l.X && o.Y == l.Y)));
     }
 }

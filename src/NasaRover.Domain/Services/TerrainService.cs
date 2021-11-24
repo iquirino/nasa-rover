@@ -52,7 +52,7 @@ public class TerrainService
         {
             throw new Exception("Terrain not found");
         }
-        terrain.Obstacles.Add(new Location(x, y));
+        terrain.AddObstacle(new Location(x, y));
         _terrainRepository.Update(terrain);
     }
 
@@ -63,7 +63,18 @@ public class TerrainService
         {
             throw new Exception("Terrain not found");
         }
-        terrain.Obstacles.RemoveAt(terrain.Obstacles.FindIndex(o => o.X == x && o.Y == y));
+        terrain.RemoveObstacle(new Location(x, y));
+        _terrainRepository.Update(terrain);
+    }
+
+    public void RemoveAllObstacles(Guid id)
+    {
+        var terrain = _terrainRepository.Get(id);
+        if(terrain == null)
+        {
+            throw new Exception("Terrain not found");
+        }
+        terrain.RemoveAllObstacles();
         _terrainRepository.Update(terrain);
     }
 
@@ -74,7 +85,7 @@ public class TerrainService
         {
             throw new Exception("Terrain not found");
         }
-        terrain.Obstacles.AddRange(obstacles);
+        terrain.AddObstacles(obstacles);
         _terrainRepository.Update(terrain);
     }
 
