@@ -42,7 +42,7 @@ public class TerrainEntity
 
     /// <summary>
     /// Method used to walk in a terrain.
-    /// I choosed to put this method here because a terrain could have other shapes.
+    /// I decided to put this method here because a terrain could have other shapes.
     /// </summary>
     public (Location location, int moves, string message) Walk(Location location, Direction direction)
     {
